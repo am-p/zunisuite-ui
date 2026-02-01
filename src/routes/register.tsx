@@ -25,34 +25,42 @@ export default function Register() {
   }
 
   return (
-    <main style={{ "max-width": "480px", margin: "40px auto", padding: "0 16px" }}>
+    <main class="auth-page">
       <h1>Register</h1>
 
-      <form onSubmit={onSubmit} style={{ display: "grid", gap: "12px" }}>
-        <label>
-          Name
-          <input value={name()} onInput={(e) => setName(e.currentTarget.value)} />
-        </label>
+      <form class="auth-form" onSubmit={onSubmit}>
+        <label for="name">Nombre</label>
+        <input
+          id="name"
+          value={name()}
+          onInput={(e) => setName(e.currentTarget.value)}
+        />
 
-        <label>
-          Email
-          <input type="email" value={email()} onInput={(e) => setEmail(e.currentTarget.value)} />
-        </label>
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          value={email()}
+          onInput={(e) => setEmail(e.currentTarget.value)}
+        />
 
-        <label>
-          Password
-          <input type="password" value={password()} onInput={(e) => setPassword(e.currentTarget.value)} />
-        </label>
+        <label for="password">Contraseña</label>
+        <input
+          id="password"
+          type="password"
+          value={password()}
+          onInput={(e) => setPassword(e.currentTarget.value)}
+        />
 
         <button type="submit" disabled={busy()}>
-          {busy() ? "Creating..." : "Create account"}
+          {busy() ? "Creando..." : "Crea una cuenta"}
         </button>
 
-        {error() && <p style={{ color: "crimson" }}>{error()}</p>}
+        {error() && <p class="auth-error">{error()}</p>}
       </form>
 
-      <p style={{ "margin-top": "16px" }}>
-        Already have an account? <a href="/login">Login</a>
+      <p class="auth-footer">
+        ¿Ya tenés una cuenta? <a href="/login">Iniciar sesión</a>
       </p>
     </main>
   );

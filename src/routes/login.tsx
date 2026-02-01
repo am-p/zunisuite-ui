@@ -49,7 +49,7 @@ export default function Login() {
       />
 
       <button type="submit" disabled={busy()}>
-        {busy() ? "Logging in..." : "Login"}
+        {busy() ? "Iniciando sesión..." : "Iniciar sesión"}
       </button>
 
       {error() && <p class="auth-error">{error()}</p>}

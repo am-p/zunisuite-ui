@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -91,16 +97,20 @@ p {
 }
 
 .auth-form {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 0.75rem 1rem;
-  align-items: center;
- /* justify-content: center;*/
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-top: 0;
 }
 
 .auth-form label {
-  text-align: right;
+  text-align: left;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.auth-form label:first-of-type {
+  margin-top: 0;
 }
 
 .auth-form input {
@@ -111,22 +121,22 @@ p {
 }
 
 .auth-form button {
-  grid-column: 1 / -1;
+
   /*margin-top: 1rem;*/
   width: 100%;
 }
 
 .auth-error {
-  grid-column: 1 / -1;
+
   color: crimson;
 }
 
 .auth-footer {
-    margin-top: 1rem;
-    text-align: center;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 .auth-page h1 {
-    margin-top: 0;
-    margin-bottom: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
 }
