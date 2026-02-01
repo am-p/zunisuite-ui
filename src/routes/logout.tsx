@@ -8,7 +8,7 @@ export default function Logout() {
 
   onMount(() => {
     auth.clearToken();
-    navigate("/login", { replace: true });
+    navigate("/", { replace: true });
   });
 
   return null;

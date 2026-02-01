@@ -28,30 +28,36 @@ export default function Login() {
   }
 
   return (
-    <main style={{ "max-width": "480px", margin: "40px auto", padding: "0 16px" }}>
-      <h1>Login</h1>
+  <main class="auth-page">
+    <h1>Iniciar sesión</h1>
 
-      <form onSubmit={onSubmit} style={{ display: "grid", gap: "12px" }}>
-        <label>
-          Email
-          <input type="email" value={email()} onInput={(e) => setEmail(e.currentTarget.value)} />
-        </label>
+    <form class="auth-form" onSubmit={onSubmit}>
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        value={email()}
+        onInput={(e) => setEmail(e.currentTarget.value)}
+      />
 
-        <label>
-          Password
-          <input type="password" value={password()} onInput={(e) => setPassword(e.currentTarget.value)} />
-        </label>
+      <label for="password">Contraseña</label>
+      <input
+        id="password"
+        type="password"
+        value={password()}
+        onInput={(e) => setPassword(e.currentTarget.value)}
+      />
 
-        <button type="submit" disabled={busy()}>
-          {busy() ? "Logging in..." : "Login"}
-        </button>
+      <button type="submit" disabled={busy()}>
+        {busy() ? "Logging in..." : "Login"}
+      </button>
 
-        {error() && <p style={{ color: "crimson" }}>{error()}</p>}
-      </form>
+      {error() && <p class="auth-error">{error()}</p>}
+    </form>
 
-      <p style={{ "margin-top": "16px" }}>
-        No account yet? <a href="/register">Register</a>
-      </p>
-    </main>
-  );
+    <p class="auth-footer">
+      ¿No tienes cuenta aún? <a href="/register">Registrate</a>
+    </p>
+  </main>
+);
 }

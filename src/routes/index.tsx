@@ -1,12 +1,17 @@
+import { A } from "@solidjs/router";
 import { Title } from "@solidjs/meta";
-import Counter from "~/components/Counter";
 
 export default function Home() {
   return (
-    <main>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-      <a href="/app">App</a>
+    <main class="home">
+      <h1>Bienvenido a ZuniSuite</h1>
+
+      <nav class="home-actions">
+        <A href="/login">Iniciar sesión</A>
+        <A href="/register">Crear cuenta</A>
+        <A href="/app">PDF → Excel</A>
+      </nav>
     </main>
   );
 }
+
