@@ -24,11 +24,11 @@ export default function AppPage() {
 
     const f = file();
     if (!f) {
-      setError("Pick a PDF first.");
+      setError("Elegí un PDF.");
       return;
     }
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
-      setError("That doesn’t look like a PDF.");
+      setError("No es un PDF el archivo que subiste.");
       return;
     }
 
@@ -38,7 +38,6 @@ export default function AppPage() {
       setMessage(`Downloaded: ${result.filename}`);
       setFile(null);
     } catch (err: any) {
-      // common: 401 if token expired / invalid
       const msg = err?.message ?? String(err);
       setError(msg);
       if (msg.includes("401")) navigate("/login", { replace: true });
@@ -52,7 +51,7 @@ export default function AppPage() {
       <header style={{ display: "flex", "justify-content": "space-between", "align-items": "center" }}>
         <h1>PDF → Excel</h1>
         <nav style={{ display: "flex", gap: "12px" }}>
-          <a href="/logout">Logout</a>
+          <a href="/logout">Salir de sesión</a>
         </nav>
       </header>
 
@@ -64,7 +63,7 @@ export default function AppPage() {
         />
 
         <button type="submit" disabled={busy()}>
-          {busy() ? "Uploading & converting..." : "Upload PDF and download Excel"}
+          {busy() ? "Subiendo & convirtiendo..." : "Subir PDF y descargar Excel"}
         </button>
 
         {error() && <p style={{ color: "crimson" }}>{error()}</p>}
