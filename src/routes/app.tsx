@@ -56,11 +56,21 @@ export default function AppPage() {
       </header>
 
       <form onSubmit={onUpload} style={{ display: "grid", gap: "12px", "margin-top": "20px" }}>
-        <input
-          type="file"
-          accept="application/pdf,.pdf"
-          onChange={(e) => setFile(e.currentTarget.files?.[0] ?? null)}
-        />
+        <div class="file-upload-wrapper">
+          <label for="pdf-upload" class="file-upload-trigger">
+            {file() ? "Cambiar archivo" : "Seleccionar archivo PDF"}
+          </label>
+          <input
+            id="pdf-upload"
+            type="file"
+            accept="application/pdf,.pdf"
+            class="file-input-hidden"
+            onChange={(e) => setFile(e.currentTarget.files?.[0] ?? null)}
+          />
+          <div class="file-name-display">
+            {file() ? file()?.name : "Ningún archivo seleccionado"}
+          </div>
+        </div>
 
         <button type="submit" disabled={busy()}>
           {busy() ? "Subiendo & convirtiendo..." : "Subir PDF y descargar Excel"}
@@ -71,7 +81,7 @@ export default function AppPage() {
       </form>
 
       <section style={{ "margin-top": "28px", opacity: 0.8 }}>
-        
+
       </section>
     </main>
   );
