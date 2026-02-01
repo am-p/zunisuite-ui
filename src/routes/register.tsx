@@ -26,7 +26,7 @@ export default function Register() {
 
   return (
     <main class="auth-page">
-      <h1>Register</h1>
+      <h1>Registrarse</h1>
 
       <form class="auth-form" onSubmit={onSubmit}>
         <label for="name">Nombre</label>
