@@ -7,16 +7,15 @@ function authHeader(): Record<string, string> {
   return t ? { Authorization: `Bearer ${t}` } : {};
 }
 
-export async function apiRegister(params: { name: string; email: string; password: string }) {
-  const url = new URL(`${API_BASE}/auth/register`);
-  url.searchParams.set("name", params.name);
-  url.searchParams.set("email", params.email);
-  url.searchParams.set("password", params.password);
-
-  const res = await fetch(url.toString(), { method: "POST" });
+export async function apiRegister(params) {
+  const res = await fetch(
+    `${API_BASE}/auth/register?name=${params.name}&email=${params.email}&password=${params.password}`,
+    { method: "POST" }
+  );
   if (!res.ok) throw new Error(await safeError(res));
   return res.json();
 }
+
 
 export async function apiLogin(params: { email: string; password: string }) {
   const body = new URLSearchParams();
